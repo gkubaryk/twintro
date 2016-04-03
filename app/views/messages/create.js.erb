@@ -1,0 +1,10 @@
+<% if @message.valid? %>
+  $('#status-box').removeClass
+  $('#status-box').addClass('alert alert-success')
+  $('#status-message').text('Sending message...')
+<% else %>
+  $('#status-box').removeClass
+  $('#status-box').addClass('alert alert-failure')
+  $('#status-message').text(<% @message.errors.messages %>)
+<% end %>
+$('#status-box').fadeToggle()
