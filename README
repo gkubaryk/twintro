@@ -3,3 +3,9 @@
 Welcome to TwIntro, a simple intro to Twilio that sends text messages to a specified phone number.
 
 dotenv-example is provided as an example; rename it to .env and replace the placeholders with actual API keys and a source phone number.
+
+Tips for getting started:
+Put your credentials and phone number in .env (see dotenv-example)
+bundle exec rake db:create db:migrate
+bundle install
+rails server
