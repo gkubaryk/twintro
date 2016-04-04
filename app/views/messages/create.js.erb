@@ -1,10 +1,14 @@
 <% if @message.valid? %>
   $('#status-box').removeClass
   $('#status-box').addClass('alert alert-success')
-  $('#status-message').text('Sending message...')
+  $('#status-message').text('Message delivered to Twilio')
 <% else %>
   $('#status-box').removeClass
   $('#status-box').addClass('alert alert-failure')
-  $('#status-message').text(<% @message.errors.messages %>)
+  $('#status-message').text('An error occurred; please check your input and try again')
+  $('#status-message').text('<%= pluralize(@message.errors.count, "error") %> occurred; please check your input and try again.')
+  <% if @message.errors.messages[:name] %> $('#name-header').highlight <% end %>
+  <% if @message.errors.messages[:number] %> $('#number-header').highlight <% end %>
+  <% if @message.errors.messages[:content] %> $('#content-header').highlight <% end %>
 <% end %>
 $('#status-box').fadeIn()

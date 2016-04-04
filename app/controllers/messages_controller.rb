@@ -21,7 +21,10 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(message_params)
-    @message.send_message if @message.valid?
+    if @message.valid?
+      @message.send_message
+      @message.save
+    end
     respond_to do |format|
       format.js
     end
