@@ -4,7 +4,7 @@
   <table>
     <div class="form-group">
       <tr><td><div id="name-header">Name: <td><%= f.text_field :name %>  (not to exceed 50 characters)</div>
-      <tr><td><div id="number-header">Number: <td><%= f.text_field :number %>  (leading + is okay, not to exceed 15 digits)</div>
+      <tr><td><div id="number-header">Number: <td><%= f.text_field :number %>  (not to exceed 15 digits, leading + permitted)</div>
       <tr><td><div id="content-header">Content: <td><%= f.text_field :content %>  (not to exceed 122 characters)</div>
     </div>
     <tr><td><%= f.submit "Send message", class: "btn btn-primary", id: 'send-message-link' %>
