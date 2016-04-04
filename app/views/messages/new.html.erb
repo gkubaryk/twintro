@@ -1,5 +1,5 @@
 <div id="message-info">
-  <h3>Enter your details</h3>
+  <h3>Send a Message</h3>
   <%= form_for @message, remote: true do |f| %>
   <table>
     <div class="form-group">
@@ -7,6 +7,7 @@
       <tr><td><div id="number-header">Number: <td><%= f.text_field :number %>  (not to exceed 15 digits, leading + permitted)</div>
       <tr><td><div id="content-header">Content: <td><%= f.text_field :content %>  (not to exceed 122 characters)</div>
     </div>
+    <tr><td>From: <td><%= @message.from %>
     <tr><td><%= f.submit "Send message", class: "btn btn-primary", id: 'send-message-link' %>
   </table>
   <% end %>

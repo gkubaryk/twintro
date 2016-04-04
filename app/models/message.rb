@@ -8,6 +8,10 @@ class Message < ActiveRecord::Base
   # max of 160 minus the 38 chars in "Sent from your Twilio trial account - "
   validates :content, presence: true, length: { maximum: 122 } # max of 160 minus the 38 characters in "
 
+  def from
+    ENV['TWILIO_PHONE_NUMBER']
+  end
+
   def phone_number_is_twilio_valid
     begin
       response = twilio_lookup_client.phone_numbers.get(number)
@@ -26,7 +30,7 @@ class Message < ActiveRecord::Base
     begin
       twilio_client.messages.create(
         to: number,
-        from: ENV['TWILIO_PHONE_NUMBER'],
+        from: from,
         body: content
       )
     rescue Twilio::REST::RequestError => e
