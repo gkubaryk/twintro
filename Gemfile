@@ -39,6 +39,7 @@ group :test do
   gem 'minitest-reporters'
   gem 'mini_backtrace'
   gem 'guard-minitest'
+  gem 'guard'
 end
 
 gem 'web-console', '~> 2.0', group: :development 

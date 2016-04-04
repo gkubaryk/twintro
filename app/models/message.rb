@@ -1,21 +1,21 @@
 class Message < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 50 }
-  validates :number, :phone_number_is_valid, presence: true, length: { maximum: 16 } #15 digits plus 1 for the +
+  VALID_NUMBER_REGEX = /\A\+?\d{3,15}\z/  # allow a + up front, require 3-15 digits
+  validates :number, presence: true, length: { maximum: 16 },  # 15 digits plus +
+                     format: { with: VALID_NUMBER_REGEX }
+  validate :phone_number_is_twilio_valid
 
   # max of 160 minus the 38 chars in "Sent from your Twilio trial account - "
   validates :content, presence: true, length: { maximum: 122 } # max of 160 minus the 38 characters in "
 
-  def phone_number_is_valid
+  def phone_number_is_twilio_valid
     begin
-      #response = twilio_lookup_client.phone_numbers.get(:number)
       response = twilio_lookup_client.phone_numbers.get(number)
       response.phone_number
     rescue Twilio::REST::RequestError => e
       if e.code == 20404  #invalid number
-        #raise "Invalid number!"
-        errors.add(:number, "must be a valid phone number")
+        errors.add(:number, "must be a valid phone number according to twilio")
       else
-        #raise e
         errors.add(:number, "something went horribly wrong with twilio")
       end
     end
