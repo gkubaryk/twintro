@@ -2,9 +2,9 @@
   <h3>Enter your details</h3>
   <%= form_for @message, remote: true do |f| %>
     <div class="form-group">
-      <p id="name-header">Name: <%= f.text_field :name %>  (not to exceed 50 characters)<br>
-      <p id="number-header">Number: <%= f.text_field :number %>  (omit spaces, hyphens)<br>
-      <p id="content-header">Content: <%= f.text_field :content %>  (not to exceed 122 characters)<br>
+      <div id="name-header">Name: <%= f.text_field :name %>  (not to exceed 50 characters)<br></div>
+      <div id="number-header">Number: <%= f.text_field :number %>  (omit spaces, hyphens)<br></div>
+      <div id="content-header">Content: <%= f.text_field :content %>  (not to exceed 122 characters)<br></div>
     </div>
     <%= f.submit "Send message", class: "btn btn-primary", id: 'send-message-link' %>
   <% end %>

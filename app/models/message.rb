@@ -22,11 +22,23 @@ class Message < ActiveRecord::Base
   end
 
   def send_message
-    twilio_client.messages.create(
-      to: number,
-      from: ENV['TWILIO_PHONE_NUMBER'],
-      body: content
-    )
+    @rejected = false
+    begin
+      twilio_client.messages.create(
+        to: number,
+        from: ENV['TWILIO_PHONE_NUMBER'],
+        body: content
+      )
+    rescue Twilio::REST::RequestError => e
+      if e.code == 21608  # trial account
+        @rejected = true
+        errors.add(:number, "must be validated by twilio because this is a trial account")
+      end
+    end
+  end
+
+  def rejected?
+    @rejected
   end
 end
 

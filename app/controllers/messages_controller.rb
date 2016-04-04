@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     if @message.valid?
       @message.send_message
-      @message.save
+      @message.save unless @message.rejected?
     end
     respond_to do |format|
       format.js
