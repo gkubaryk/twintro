@@ -4,7 +4,7 @@
   <table>
     <div class="form-group">
       <tr><td><div id="name-header">Name: <td><%= f.text_field :name %>  (not to exceed 50 characters)</div>
-      <tr><td><div id="number-header">Number: <td><%= f.text_field :number %>  (not to exceed 15 digits, leading + permitted)</div>
+      <tr><td><div id="number-header">Number: <td><%= f.text_field :number %>  (not to exceed 15 digits)</div>
       <tr><td><div id="content-header">Content: <td><%= f.text_field :content %>  (not to exceed 122 characters)</div>
     </div>
     <tr><td>From: <td><%= @message.from %>
@@ -15,3 +15,5 @@
 <div id="status-box" class="alert alert-success">
   <p id="status-message">Status: Haven’t done anything yet</p>
 </div>
+<br>
+<%= link_to 'Show Message Database', '/messages/' %>

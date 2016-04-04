@@ -2,13 +2,14 @@
 
 <h1>Listing Messages</h1>
 
-<table>
+<table width="100%">
   <thead>
     <tr>
       <th>Name</th>
+      <th>From</th>
       <th>Number</th>
       <th>Content</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -16,6 +17,7 @@
     <% @messages.each do |message| %>
       <tr>
         <td><%= message.name %></td>
+        <td><%= message.from %></td>
         <td><%= message.number %></td>
         <td><%= message.content %></td>
       </tr>
