@@ -2,4 +2,4 @@
 
 Welcome to TwIntro, a simple intro to Twilio that sends text messages to a specified phone number.
 
-dotenv-example is provided as an example; rename it to .env and replace the placeholders with actual API keys and a source phone numbers.
+dotenv-example is provided as an example; rename it to .env and replace the placeholders with actual API keys and a source phone number.
