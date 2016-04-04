@@ -21,7 +21,7 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(message_params)
-    @message.number.gsub(/\D/, '') # strip spaces
+    @message.number.gsub!(/\D/, '') # strip spaces
     if @message.valid?
       @message.send_message
       @message.save unless @message.rejected?

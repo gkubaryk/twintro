@@ -1,12 +1,14 @@
 <div id="message-info">
   <h3>Enter your details</h3>
   <%= form_for @message, remote: true do |f| %>
+  <table>
     <div class="form-group">
-      <div id="name-header">Name: <%= f.text_field :name %>  (not to exceed 50 characters)<br></div>
-      <div id="number-header">Number: <%= f.text_field :number %>  (omit spaces, hyphens)<br></div>
-      <div id="content-header">Content: <%= f.text_field :content %>  (not to exceed 122 characters)<br></div>
+      <tr><td><div id="name-header">Name: <td><%= f.text_field :name %>  (not to exceed 50 characters)</div>
+      <tr><td><div id="number-header">Number: <td><%= f.text_field :number %>  (leading + is okay, not to exceed 15 digits)</div>
+      <tr><td><div id="content-header">Content: <td><%= f.text_field :content %>  (not to exceed 122 characters)</div>
     </div>
-    <%= f.submit "Send message", class: "btn btn-primary", id: 'send-message-link' %>
+    <tr><td><%= f.submit "Send message", class: "btn btn-primary", id: 'send-message-link' %>
+  </table>
   <% end %>
 </div>
 <div id="status-box" class="alert alert-success">
