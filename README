@@ -9,3 +9,7 @@ Put your credentials and phone number in .env (see dotenv-example)
 bundle exec rake db:create db:migrate
 bundle install
 rails server
+
+Helpful hints:
+spring won't automatically reload your .env; you may need to restart rails after changing .env
+rails will not automatically shut down spring; you can use 'bin/spring stop' to do that, or simply close the terminal
