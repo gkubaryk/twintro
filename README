@@ -5,6 +5,7 @@ Welcome to TwIntro, a simple intro to Twilio that sends text messages to a speci
 dotenv-example is provided as an example; rename it to .env and replace the placeholders with actual API keys and a source phone number.
 
 Tips for getting started:
+You'll need a Twilio account; a trial account works just fine! You will only be able to send messages to a verified phone number (ie, yourself). Remember to use live credentials; the test credentials serve a different purpose.
 Put your credentials and phone number in .env (see dotenv-example)
 bundle exec rake db:create db:migrate
 bundle install
@@ -12,4 +13,4 @@ rails server
 
 Helpful hints:
 spring won't automatically reload your .env; you may need to restart rails after changing .env
-rails will not automatically shut down spring; you can use 'bin/spring stop' to do that, or simply close the terminal
+rails will not automatically shut down spring on exit; you can use 'bin/spring stop' to do that, or simply close the terminal
