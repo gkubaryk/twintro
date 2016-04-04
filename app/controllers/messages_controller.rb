@@ -15,6 +15,7 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @message = Message.new
+    @message.from = ENV['TWILIO_PHONE_NUMBER'].gsub(/\D/, '')
   end
 
   # POST /messages
@@ -22,6 +23,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.number.gsub!(/\D/, '') # strip spaces
+    @message.from = ENV['TWILIO_PHONE_NUMBER'].gsub(/\D/, '')
     if @message.valid?
       @message.send_message
       @message.save unless @message.rejected?
@@ -63,7 +65,7 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      params.require(:message).permit(:name, :number, :content)
+      params.require(:message).permit(:name, :number, :content, :from)
     end
 
 end
