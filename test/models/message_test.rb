@@ -2,7 +2,7 @@ require 'test_helper'
 
 class MessageTest < ActiveSupport::TestCase
   def setup
-    @message = Message.new(name: "Example", number: "4105551234", content: "sample content")
+    @message = Message.new(name: "Example", number: "4105551234", content: "sample content", from: "4105554321")
   end
 
   test "should be valid" do
