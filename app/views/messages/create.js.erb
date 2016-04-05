@@ -10,7 +10,7 @@ $('#content-header').removeClass
   $('#status-box').removeClass
   $('#status-box').addClass('alert alert-failure')
   $('#status-message').text('<%= pluralize(@message.errors.count, "error") %> occurred; please check your input and try again.')
-  $('#status-message').text('<%= @message.errors.full_messages.first %>')
+  $('#status-message').text('<%= @message.errors.full_messages.first.sub("'", "no") %>')
   <% if @message.errors.messages[:name] %> $('#name-header').addClass('field_with_errors') <% end %>
   <% if @message.errors.messages[:number] %> $('#number-header').addClass('field_with_errors') <% end %>
   <% if @message.errors.messages[:content] %> $('#content-header').addClass('field_with_errors') <% end %>
