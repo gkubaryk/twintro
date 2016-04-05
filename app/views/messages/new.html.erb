@@ -3,9 +3,9 @@
   <%= form_for @message, remote: true do |f| %>
   <table>
     <div class="form-group">
-      <tr><td><div id="name-header">Name: <td><%= f.text_field :name %>  (not to exceed 50 characters)</div>
-      <tr><td><div id="number-header">Number: <td><%= f.text_field :number %>  (not to exceed 15 digits)</div>
-      <tr><td><div id="content-header">Content: <td><%= f.text_field :content %>  (not to exceed 122 characters)</div>
+      <tr><td><div id="name-header">Name: <td><%= f.text_field :name, required: true, size: 16, maxlength: 50 %>  (not to exceed 50 characters)</div>
+      <tr><td><div id="number-header">Number: <td><%= f.text_field :number, required: true, size: 16 %>  (not to exceed 15 digits)</div>
+      <tr><td><div id="content-header">Content: <td><%= f.text_field :content, required: true, size: 16, maxlength: 122 %>  (not to exceed 122 characters)</div>
     </div>
     <tr><td>From: <td><%= @message.from %>
     <tr><td><%= f.submit "Send message", class: "btn btn-primary", id: 'send-message-link' %>
