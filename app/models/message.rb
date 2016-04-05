@@ -1,6 +1,7 @@
 class Message < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 50 }
-  VALID_NUMBER_REGEX = /\A\+?\d{3,15}\z/  # allow a + up front, require 3-15 digits
+  #VALID_NUMBER_REGEX = /\A\+?\d{3,15}\z/  # allow a + up front, require 3-15 digits
+  VALID_NUMBER_REGEX = /\A\+?1?\(?([2-9][0-8][0-9])\)?([2-9][0-9]{2})([0-9]{4})\z/ # more stringent NANP check
   validates :number, presence: true, length: { maximum: 16 },  # 15 digits plus +
                      format: { with: VALID_NUMBER_REGEX }
   validate :phone_number_is_twilio_valid
